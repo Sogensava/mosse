@@ -77,7 +77,7 @@ RUN mkdir -p /var/run/sshd /root/.ssh
 # Conda Environment
 ENV MINICONDA_VERSION latest
 ENV PATH /opt/miniconda/bin:$PATH
-RUN wget -qO /tmp/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh && \
+RUN wget -qO /tmp/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-4.5.11-Linux-x86_64.sh && \
     bash /tmp/miniconda.sh -bf -p /opt/miniconda && \
     conda clean -ay && \
     rm -rf /opt/miniconda/pkgs && \
@@ -96,7 +96,7 @@ RUN mkdir /tmp/openmpi && \
     ldconfig && \
     rm -rf /tmp/openmpi
 
-RUN conda install -c r -y conda python=3.7.16 pip
+RUN conda install -c r -y conda python=3.7 pip
 RUN conda install -y numpy pyyaml ipython mkl scikit-learn matplotlib pandas setuptools Cython h5py graphviz libgcc mkl-include cmake cffi typing cython && \
     conda install -y -c mingfeima mkldnn && \
     conda install -c anaconda gxx_linux-64
