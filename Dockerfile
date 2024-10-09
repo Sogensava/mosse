@@ -96,15 +96,15 @@ RUN mkdir /tmp/openmpi && \
     ldconfig && \
     rm -rf /tmp/openmpi
 
-RUN conda install -c r -y conda python=3.7 pip
-RUN conda install -y numpy pyyaml ipython mkl scikit-learn matplotlib pandas setuptools Cython h5py graphviz libgcc mkl-include cmake cffi typing cython && \
-    conda install -y -c mingfeima mkldnn && \
+RUN conda install -c r -y conda python=3.9 pip
+RUN conda install -y numpy pyyaml matplotlib setuptools
+RUN conda install -y -c mingfeima mkldnn && \
     conda install -c anaconda gxx_linux-64
 
 RUN conda install -c anaconda gxx_linux-64
 RUN conda clean -ya
 #RUN pip install boto3 addict tqdm regex pyyaml opencv-python opencv-contrib-python azureml-defaults nltk spacy future tensorboard wandb filelock tokenizers sentencepiece
-RUN pip install regex pyyaml opencv-contrib-python future
+RUN pip install regex pyyaml opencv-contrib-python==4.5.1.48 future
 
 # Set CUDA_ROOT
 RUN export CUDA_HOME="/usr/local/cuda"
@@ -114,7 +114,7 @@ RUN export CUDA_HOME="/usr/local/cuda"
 RUN pip install PyYAML && \
     pip install easydict && \
     pip install cython && \
-    pip install opencv-python && \
+    pip install opencv-python==4.5.1.48 && \
     pip install pandas && \
     pip install tqdm && \
     pip install pycocotools && \

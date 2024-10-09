@@ -13,7 +13,7 @@ if not colorimage:
 
 frame = cv2.cvtColor(cv2.imread(colorimage),cv2.COLOR_BGR2RGB)
 tracker = cv2.legacy.TrackerMOSSE_create()
-bbox = [selection.x, selection.y, selection.width, selection.height]
+bbox = (selection.x, selection.y, selection.width, selection.height)
 target_pos = np.array([bbox[0] + int(bbox[2]/2), bbox[1] + int(bbox[3]/2)])
 target_sz = np.array([bbox[2], bbox[3]])
 
