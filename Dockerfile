@@ -104,7 +104,7 @@ RUN conda install -y -c mingfeima mkldnn && \
 RUN conda install -c anaconda gxx_linux-64
 RUN conda clean -ya
 #RUN pip install boto3 addict tqdm regex pyyaml opencv-python opencv-contrib-python azureml-defaults nltk spacy future tensorboard wandb filelock tokenizers sentencepiece
-RUN pip install regex pyyaml opencv-contrib-python==4.5.1.48 future
+RUN pip install regex pyyaml future
 
 # Set CUDA_ROOT
 RUN export CUDA_HOME="/usr/local/cuda"
@@ -146,3 +146,5 @@ WORKDIR /home/vot_ws
 RUN vot initialize vot2022/shorttermbox --workspace .
 RUN git clone https://github.com/Sogensava/mosse.git
 COPY ./trackers.ini /home/vot_ws/trackers.ini
+
+RUN pip install opencv-contrib-python==4.5.1.48
